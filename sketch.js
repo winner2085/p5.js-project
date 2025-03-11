@@ -1,19 +1,52 @@
+let button;
+let shouldShowSq = false;
+let shouldShowCir = false;
+let shouldShowTri = false;
+
 function setup() {
-    createCanvas(710, 400);
-    background(0);
-    strokeWeight(10);
-    colorMode(HSB);
-    describe('A blank canvas where the user draws by dragging the mouse');
-    let drawButton = createButton('Rainbow Draw');
-    let kButton = createButton('Kalaidescope');
-    let snowButton = createButton('Snow Day');
+  createCanvas (720, 400);
+  angleMode(DEGREES);
+  background(220);
+  button = createButton('Square');
+  button.mousePressed(function() {
+    shouldShowSq = !shouldShowSq;
+  });
+  button = createButton('Circle');
+  button.mousePressed(function() {
+    shouldShowCir = !shouldShowCir;
+  });
+  button = createButton('Triangle');
+  button.mousePressed(function() {
+    shouldShowTri = !shouldShowTri;
+  });
 }
 
-
-  function mouseDragged() {
-    let lineHue = mouseX - mouseY;
-    stroke(lineHue, 90, 90);
-    line(pmouseX, pmouseY, mouseX, mouseY);
+function draw() {
+  background(51);
+  if (shouldShowSq) {
+    ShowSq();
+  }
+  
+  if (shouldShowCir) {
+    ShowCir();
   }
 
-  
+  if (shouldShowTri) {
+    ShowTri();
+  }
+}
+
+function ShowSq() {
+  fill(0, 204, 255);
+  square(25, 25, 100);
+}
+
+function ShowCir() {
+  fill (171, 22, 22);
+  circle(560, 150, 100);
+}
+
+function ShowTri() {
+  fill(253, 210, 242);
+  triangle(250, 350, 350, 200, 450, 350);
+}
